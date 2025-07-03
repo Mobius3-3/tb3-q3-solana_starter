@@ -1,4 +1,4 @@
-import wallet from "../turbin3-wallet.json"
+import wallet from "/home/fc/.config/solana/id.json"
 import { createUmi } from "@metaplex-foundation/umi-bundle-defaults"
 import { createGenericFile, createSignerFromKeypair, signerIdentity } from "@metaplex-foundation/umi"
 import { irysUploader } from "@metaplex-foundation/umi-uploader-irys"
@@ -16,28 +16,27 @@ umi.use(signerIdentity(signer));
     try {
         // Follow this JSON structure
         // https://docs.metaplex.com/programs/token-metadata/changelog/v1.0#json-structure
-
-        // const image = ???
-        // const metadata = {
-        //     name: "?",
-        //     symbol: "?",
-        //     description: "?",
-        //     image: "?",
-        //     attributes: [
-        //         {trait_type: '?', value: '?'}
-        //     ],
-        //     properties: {
-        //         files: [
-        //             {
-        //                 type: "image/png",
-        //                 uri: "?"
-        //             },
-        //         ]
-        //     },
-        //     creators: []
-        // };
-        // const myUri = ???
-        // console.log("Your metadata URI: ", myUri);
+        const image = "https://gateway.irys.xyz/3LekizSJRWkV55R7YUWZS33ouqwFe6RrXeBppTy5NUSs"
+        const metadata = {
+            name: "testRug",
+            symbol: "TR",
+            description: "rug nft test",
+            image: image,
+            attributes: [
+                {trait_type: 'color', value: '20'}
+            ],
+            properties: {
+                files: [
+                    {
+                        type: "image/png",
+                        uri: "image"
+                    },
+                ]
+            },
+            creators: []
+        };
+        const myUri = await umi.uploader.uploadJson([metadata]);
+        console.log("Your metadata URI: ", myUri); // https://gateway.irys.xyz/F5K1PEWGCwjVuxxo6berrzDSTP64fwp2HjV1bFv6pJjQ
     }
     catch(error) {
         console.log("Oops.. Something went wrong", error);

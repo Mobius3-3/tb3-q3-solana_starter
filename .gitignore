@@ -2,3 +2,12 @@
 node_modules
 target
 .DS_Store
+.vscode
+
+*.png
+
+yarn.lock
+
+node_modules
+prereqs
+tools
