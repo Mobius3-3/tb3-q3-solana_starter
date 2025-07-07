@@ -16,10 +16,10 @@ umi.use(signerIdentity(signer));
     try {
         // Follow this JSON structure
         // https://docs.metaplex.com/programs/token-metadata/changelog/v1.0#json-structure
-        const image = "https://gateway.irys.xyz/3LekizSJRWkV55R7YUWZS33ouqwFe6RrXeBppTy5NUSs"
+        const image = "https://gateway.irys.xyz/3rdDr339tSiQXpNR7sDbsubWu9X1bdP3b9FdzbwSACpj"
         const metadata = {
-            name: "testRug",
-            symbol: "TR",
+            name: "Rug Möbius Strip",
+            symbol: "RMS",
             description: "rug nft test",
             image: image,
             attributes: [
@@ -29,13 +29,13 @@ umi.use(signerIdentity(signer));
                 files: [
                     {
                         type: "image/png",
-                        uri: "image"
+                        uri: image
                     },
-                ]
+                ],
             },
-            creators: []
+            category:"image",
         };
-        const myUri = await umi.uploader.uploadJson([metadata]);
+        const myUri = await umi.uploader.uploadJson(metadata);
         console.log("Your metadata URI: ", myUri); // https://gateway.irys.xyz/F5K1PEWGCwjVuxxo6berrzDSTP64fwp2HjV1bFv6pJjQ
     }
     catch(error) {
